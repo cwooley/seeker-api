@@ -8,7 +8,7 @@ class ApplicationController < ActionController::API
   def current_user
     authenticate_or_request_with_http_token do |jwt_token, options|
       begin
-        decoded_token = JWT.decode(jwt_token, "supersecretcode")
+        decoded_token = JWT.decode(jwt_token, ENV["jwt_secret"])
 
       rescue JWT::DecodeError
         return nil
@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
 
   def decoded_token(token)
     begin
-      JWT.decode(token, "learnlovecode")
+      JWT.decode(token, ENV["jwt_secret"])
     rescue JWT::DecodeError
       return nil
     end

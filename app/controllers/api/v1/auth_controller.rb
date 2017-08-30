@@ -8,7 +8,7 @@ class Api::V1::AuthController < ApplicationController
       token = issue_token(payload)
       render json: { jwt: token}
     else
-      byebug
+      render json: { message: 'wrong password idiot.' }
       # you're not the right person
     end
   end
