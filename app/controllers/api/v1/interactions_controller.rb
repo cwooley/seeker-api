@@ -19,6 +19,9 @@ class Api::V1::InteractionsController < ApplicationController
     end
   end
 
+  ##TODO
+  #DESTROY
+  
   private
 
   def interaction_params

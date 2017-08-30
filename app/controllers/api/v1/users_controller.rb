@@ -29,6 +29,9 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  ##TODO
+  #DESTROY 
+
   private
 
   def user_params

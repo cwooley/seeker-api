@@ -19,6 +19,9 @@ class Api::V1::ContactsController < ApplicationController
     end
   end
 
+  ##TODO
+  #DESTROY
+  
   private
 
   def contact_params

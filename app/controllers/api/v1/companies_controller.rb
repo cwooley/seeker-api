@@ -19,6 +19,9 @@ class Api::V1::CompaniesController < ApplicationController
       end
     end
 
+    ##TODO
+    #DESTROY
+
     private
 
     def company_params
