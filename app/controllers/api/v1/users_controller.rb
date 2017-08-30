@@ -16,7 +16,10 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    # So shoot me.
+    user_id = JWT.decode(request.headers["id"], ENV["jwt_secret"])[0]["user_id"]
+
+    @user = User.find(user_id)
     render :json => @user.to_json(:include => {:companies => {:include => [:contacts, :interactions ]}})
   end
 
@@ -30,7 +33,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   ##TODO
-  #DESTROY 
+  #DESTROY
 
   private
 
