@@ -15,5 +15,9 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-
+  def show
+    @user = User.find(params[:id])
+    render :json => @user.to_json(:include => {:companies => {:include => [:contacts, :interactions ]}})
+    # render json: @user
+  end
 end

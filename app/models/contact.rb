@@ -1,3 +1,3 @@
 class Contact < ApplicationRecord
-  belongs_to :job_app, dependant: :destroy
+  belongs_to :company, dependent: :destroy
 end

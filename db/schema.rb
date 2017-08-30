@@ -10,18 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830143438) do
+ActiveRecord::Schema.define(version: 20170830162746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "JobApps", force: :cascade do |t|
-    t.string "company_name"
-    t.boolean "active"
-    t.string "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "companies", force: :cascade do |t|
+    t.string "name"
     t.string "location"
+    t.boolean "active"
+    t.integer "user_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -29,15 +27,16 @@ ActiveRecord::Schema.define(version: 20170830143438) do
     t.string "phone_number"
     t.string "email"
     t.string "position"
-    t.integer "job_app_id"
+    t.integer "company_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "interactions", force: :cascade do |t|
-    t.string "type"
+    t.string "kind"
     t.string "status"
-    t.integer "job_app_id"
+    t.integer "company_id"
+    t.date "follow_up_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -46,9 +45,9 @@ ActiveRecord::Schema.define(version: 20170830143438) do
     t.string "username"
     t.string "password_digest"
     t.string "email"
+    t.string "profile_image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "profile_image_url"
   end
 
 end
