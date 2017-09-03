@@ -3,7 +3,7 @@ class CreateCompanies < ActiveRecord::Migration[5.1]
     create_table :companies do |t|
       t.string :name
       t.string :location
-      t.boolean :active
+      t.boolean :active, default: true
       t.integer :user_id
     end
   end

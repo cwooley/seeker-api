@@ -7,8 +7,11 @@ class Api::V1::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
-      render json: @user
+      payload = { user_id: @user.id}
+      token = issue_token(payload)
+      render :json => [{ jwt: token}, @user.to_json(:include => [ {:companies => {:include => [:contacts, :interactions]}}])]
     else
       # show some error
       render json: { message: "User not created"}
