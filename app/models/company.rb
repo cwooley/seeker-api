@@ -1,5 +1,5 @@
 class Company < ApplicationRecord
-  has_many :contacts
-  has_many :interactions
-  belongs_to :user, dependent: :destroy
+  has_many :contacts, dependent: :destroy
+  has_many :interactions, dependent: :destroy
+  belongs_to :user
 end

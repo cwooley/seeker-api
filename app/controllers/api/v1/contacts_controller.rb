@@ -19,9 +19,15 @@ class Api::V1::ContactsController < ApplicationController
     end
   end
 
+  def destroy
+    @contact = Contact.find(params[:id])
+    @contact.destroy!
+    render json: @contact
+  end
+
   ##TODO
   #DESTROY
-  
+
   private
 
   def contact_params

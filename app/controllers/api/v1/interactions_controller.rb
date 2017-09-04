@@ -19,9 +19,15 @@ class Api::V1::InteractionsController < ApplicationController
     end
   end
 
+  def destroy
+    @interaction = Interaction.find(params[:id])
+    @interaction.destroy!
+    render json: @interaction
+  end
+
   ##TODO
   #DESTROY
-  
+
   private
 
   def interaction_params
